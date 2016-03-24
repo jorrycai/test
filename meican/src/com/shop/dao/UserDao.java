@@ -16,7 +16,7 @@ public class UserDao extends HibernateDaoSupport {
 		List<User> list = this.getHibernateTemplate().find(hql, phone);
 		if(list != null && list.size() > 0){
 			return list.get(0);
-		}
+		}else
 		return null;
 	}
 	public User findByName(String name){
@@ -24,7 +24,7 @@ public class UserDao extends HibernateDaoSupport {
 		List<User> list = this.getHibernateTemplate().find(hql, name);
 		if(list != null && list.size() > 0){
 			return list.get(0);
-		}
+		}else
 		return null;
 	}
 	public void update(User existUser) {
@@ -35,7 +35,7 @@ public class UserDao extends HibernateDaoSupport {
 		List<User> list = this.getHibernateTemplate().find(hql, user.getUName(),user.getUPassword(),1);
 		if(list != null && list.size() > 0){
 			return list.get(0);
-		}
+		}else
 		return null;
 	}
 	public User loginWithPhone(User user) {
@@ -43,7 +43,7 @@ public class UserDao extends HibernateDaoSupport {
 		List<User> list = this.getHibernateTemplate().find(hql, user.getUPhone(),user.getUPassword(),1);
 		if(list != null && list.size() > 0){
 			return list.get(0);
-		}                               
+		}else                               
 		return null;
 	}
 	public boolean checkUserExistsWithName(String name) {
@@ -51,7 +51,7 @@ public class UserDao extends HibernateDaoSupport {
 		List<User> users = this.getHibernateTemplate().find(hql,name);
 		if(users != null && users.size() > 0) {
 			return true;
-		}
+		}else
 		return false;
 	}
 	public boolean checkUserExistsWithNameAndPassword(String name,String password) {
@@ -59,7 +59,16 @@ public class UserDao extends HibernateDaoSupport {
 		List<User> users = this.getHibernateTemplate().find(hql,name,password);
 		if(users != null && users.size() > 0) {
 			return true;
-		}
+		}else
+		return false;
+	}
+	public boolean checkUserExistsWithPhone(String phone) {
+		String hql = "from User where u_phone = ?";
+		List<User> users = this.getHibernateTemplate().find(hql,phone);
+		System.out.println("0000000000000000"+users);
+		if(users != null && users.size() > 0) {
+			return true;
+		}else
 		return false;
 	}
 }

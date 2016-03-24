@@ -8,21 +8,25 @@ import net.sf.json.JSONArray;
 
 
 import com.alibaba.fastjson.JSON;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.shop.service.UserService;
+import com.shop.utils.checkcode;
+import com.shop.utils.taobao;
 import com.shop.vo.User;
+import com.taobao.api.ApiException;
 
 public class UserAction extends ActionSupport implements ModelDriven<User> {
 	private UserService userService;
 	private User user = new User();
-	private Map<String, String> map;
+	private Map<Object, Object> map;
 	private String json;
 	
-	public Map<String, String> getMap() {
+	public Map<Object, Object> getMap() {
 		return map;
 	}
-	public void setMap(Map<String, String> map) {
+	public void setMap(Map<Object, Object> map) {
 		this.map = map;
 	}
 	public User getModel() {
@@ -51,7 +55,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		String name=user.getUName().trim();
 		String password =user.getUPassword().trim();
 		// map中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据
-		map=new HashMap<String, String>();
+		map=new HashMap<Object, Object>();
 		if(name.equals("")){
 			map.put("message", "请输入用户名");	
 			map.put("result", "false");
@@ -71,20 +75,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 				}
 			}
 		}
-		String string1= "[{ y: "+"55.11"+", color : "+"colors[0]"+" },{ y: "+"21.63"+", color: "+"colors[1]"+" }]";
-		String  jsonArray=JSONArray.fromObject(string1).toString();
-		this.setJson(jsonArray);
-		System.out.println(json);
-		//map.put("00", json);
-		
-		System.out.println("map"+JSONArray.fromObject(map));
-		return "json";
+		return "map";
 	}
 	/*用户名登陆*/
 	public String loginWithName(){
 		String name=user.getUName().trim();
 		String password =user.getUPassword().trim();
-		map=new HashMap<String, String>();
+		map=new HashMap<Object, Object>();
 		if(!(userService.checkUserExistsWithNameAndPassword(name,password))){	
 			map.put("message", "用户名或密码错误");
 			map.put("result", "false");
@@ -95,6 +92,52 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 		}
 		//System.out.print(map);
+		return "map";
+	}
+	
+	public String registWithPhone1(){
+		// map中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据 
+		map=new HashMap<Object, Object>();
+		if(userService.checkUserExistsWithPhone(user)){		
+			map.put("message", "用户名已被注册");	
+			map.put("result", "false");
+		}else{
+			String code=checkcode.getcode();
+			String phone=user.getUPhone();
+		try {
+			taobao.test1(phone, code);
+			map.put("message", "验证码发送成功");
+			map.put("result", "true");
+			ActionContext.getContext().getSession().put(user.getUPhone(), code); 
+		} catch (ApiException e) {
+			map.put("message", "验证码发送失败");
+			map.put("result", "false");
+			e.printStackTrace();
+		}
+	
+//	  //改动 放到 try里面     / seeion的key设置为手机号码
+//		map.put("message", "验证码发送成功");
+//		map.put("result", "true");
+//		ActionContext.getContext().getSession().put("rand", code); 
+		} 
+	    return "map";	
+	}
+		
+	public String registWithPhone2(){
+		// map中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据 
+		map=new HashMap<Object,Object>();
+		String ver=(String) ActionContext.getContext().getSession().get(user.getUPhone());  
+		if(user.getUCheckCode().equals(ver))
+		{
+		userService.saveUser(user);	
+		map.put("message", "注册成功");
+		  map.put("result", "true");
+		System.out.print(map);
+		}else{
+			map.put("message", "废了");
+			System.out.print(map);
+			}
+		
 		return "map";
 	}
 

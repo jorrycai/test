@@ -2,6 +2,8 @@ package com.shop.test;
 
 import java.text.DecimalFormat;
 import java.util.Random;
+
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
 import org.junit.Test;
 
 
@@ -13,15 +15,15 @@ import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
 
 public class TaobaoTest {
 
-	public void test1() throws ApiException{
+	public static void test1(String phone,String code) throws ApiException{
 	
 		String url="http://gw.api.taobao.com/router/rest";
 		String appkey="23327101";
 		String secret="d5e8953069af1c8aae5d85ecfec96e14";
-		String code="2145";
+		//String code="2145";
 		String product="美餐";
 		String s1="{\"code\":\""+code+"\",\"product\":\""+product+"\"}";
-		String phone="13199516870";
+		//String phone="13199516870";
 		
 		
 		TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
@@ -68,6 +70,13 @@ public class TaobaoTest {
 		int r6=rd.nextInt(9);
 		String sss=r1+""+r2+r3+r4+r5+r6;
 		System.out.println(sss);
+		try {
+			test1("1563670052l",sss);
+		} catch (ApiException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("短信发送失败");
+		}
 		
 	}
 	

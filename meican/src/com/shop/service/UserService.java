@@ -43,6 +43,11 @@ public class UserService {
 	}
 	public boolean checkUserExistsWithNameAndPassword(String name,String password) {
 		return userDao.checkUserExistsWithNameAndPassword(name,password);
+	}
+	public boolean checkUserExistsWithPhone(User u) {
+		return userDao.checkUserExistsWithPhone(u.getUPhone());
 		
 	}
+	
+	
 }

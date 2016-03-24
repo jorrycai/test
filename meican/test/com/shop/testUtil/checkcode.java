@@ -14,5 +14,6 @@ public class checkcode {
 		int r6=rd.nextInt(9);
 		String sss=r1+""+r2+r3+r4+r5+r6;
 		System.out.println(sss);
+		
 	}
 }

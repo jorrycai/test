@@ -19,5 +19,9 @@ public class StoreService {
 	public List<Store> findByGeohash(String geohash){
 		return StoreDao.findByGeohash(geohash);
 	}
+	public List<Store> findTop(){
+		return StoreDao.findTop();
+	}
+	
 
 }

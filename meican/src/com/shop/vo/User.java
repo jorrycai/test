@@ -1,5 +1,9 @@
 package com.shop.vo;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
@@ -10,12 +14,17 @@ public class User implements java.io.Serializable {
 
 	private Integer UId;
 	private String UName;
-	private String UPhone;
-	private String UPic;
-	private String UAddress;
-	private String URname;
+	private String UEmail;
 	private String UPassword;
-	private String token;
+	private String UHimg;
+	private String UPhone;
+	private Date URegisterTime;
+	private Date ULoginTime;
+	private Integer UScore;
+	private boolean UIsVip;
+	private short UStatus;
+	private String UCheckCode;
+	private Set paies = new HashSet(0);
 
 	// Constructors
 
@@ -24,15 +33,21 @@ public class User implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public User(String UName, String UPhone, String UPic, String UAddress,
-			String URname, String UPassword, String token) {
+	public User(String UName, String UEmail, String UPassword, String UHimg,
+			String UPhone, Date URegisterTime, Date ULoginTime, Integer UScore,
+			boolean UIsVip, short UStatus, String UCheckCode, Set paies) {
 		this.UName = UName;
-		this.UPhone = UPhone;
-		this.UPic = UPic;
-		this.UAddress = UAddress;
-		this.URname = URname;
+		this.UEmail = UEmail;
 		this.UPassword = UPassword;
-		this.token = token;
+		this.UHimg = UHimg;
+		this.UPhone = UPhone;
+		this.URegisterTime = URegisterTime;
+		this.ULoginTime = ULoginTime;
+		this.UScore = UScore;
+		this.UIsVip = UIsVip;
+		this.UStatus = UStatus;
+		this.UCheckCode = UCheckCode;
+		this.paies = paies;
 	}
 
 	// Property accessors
@@ -53,36 +68,12 @@ public class User implements java.io.Serializable {
 		this.UName = UName;
 	}
 
-	public String getUPhone() {
-		return this.UPhone;
+	public String getUEmail() {
+		return this.UEmail;
 	}
 
-	public void setUPhone(String UPhone) {
-		this.UPhone = UPhone;
-	}
-
-	public String getUPic() {
-		return this.UPic;
-	}
-
-	public void setUPic(String UPic) {
-		this.UPic = UPic;
-	}
-
-	public String getUAddress() {
-		return this.UAddress;
-	}
-
-	public void setUAddress(String UAddress) {
-		this.UAddress = UAddress;
-	}
-
-	public String getURname() {
-		return this.URname;
-	}
-
-	public void setURname(String URname) {
-		this.URname = URname;
+	public void setUEmail(String UEmail) {
+		this.UEmail = UEmail;
 	}
 
 	public String getUPassword() {
@@ -93,12 +84,76 @@ public class User implements java.io.Serializable {
 		this.UPassword = UPassword;
 	}
 
-	public String getToken() {
-		return this.token;
+	public String getUHimg() {
+		return this.UHimg;
 	}
 
-	public void setToken(String token) {
-		this.token = token;
+	public void setUHimg(String UHimg) {
+		this.UHimg = UHimg;
+	}
+
+	public String getUPhone() {
+		return this.UPhone;
+	}
+
+	public void setUPhone(String UPhone) {
+		this.UPhone = UPhone;
+	}
+
+	public Date getURegisterTime() {
+		return this.URegisterTime;
+	}
+
+	public void setURegisterTime(Date URegisterTime) {
+		this.URegisterTime = URegisterTime;
+	}
+
+	public Date getULoginTime() {
+		return this.ULoginTime;
+	}
+
+	public void setULoginTime(Date ULoginTime) {
+		this.ULoginTime = ULoginTime;
+	}
+
+	public Integer getUScore() {
+		return this.UScore;
+	}
+
+	public void setUScore(Integer UScore) {
+		this.UScore = UScore;
+	}
+
+	public boolean getUIsVip() {
+		return this.UIsVip;
+	}
+
+	public void setUIsVip(boolean UIsVip) {
+		this.UIsVip = UIsVip;
+	}
+
+	public short getUStatus() {
+		return this.UStatus;
+	}
+
+	public void setUStatus(short UStatus) {
+		this.UStatus = UStatus;
+	}
+
+	public String getUCheckCode() {
+		return this.UCheckCode;
+	}
+
+	public void setUCheckCode(String UCheckCode) {
+		this.UCheckCode = UCheckCode;
+	}
+
+	public Set getPaies() {
+		return this.paies;
+	}
+
+	public void setPaies(Set paies) {
+		this.paies = paies;
 	}
 
 }

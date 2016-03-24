@@ -6,10 +6,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
+ <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'MyJsp.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</td>
 							</tr>
 						</tbody></table></form>
-  <form id="login" action="${ pageContext.request.contextPath }/userAction_loginWithName"  method="post" >
+  	<form id="login" action="${ pageContext.request.contextPath }/userAction_loginWithName"  method="post" >
 						<table>
 							<tbody><tr>
 								<th>用户名:</th><td>
@@ -65,7 +65,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</td>
 							</tr>
 						</tbody></table></form>
-    
-
-  </body>
+						<br><br><br>
+						<a href="${ pageContext.request.contextPath }/storeAction_findTop">
+						findTop
+						</a>
+   						<br><br><br>
+   						
+   						<a href="${ pageContext.request.contextPath }/goodsAction_findbyPID">
+						findByPID
+						</a>
+   						<br><br><br>
+   	<form id="findSid" action="${ pageContext.request.contextPath }/goodsAction_findSIDbyID"  method="post" >
+						<table>
+							<tbody><tr>
+								<th>Gid :</th><td>
+								<input type="text" id="Gid" name="GId" class="text"/>	</td>
+							</tr>
+							<tr>
+								<th>&nbsp;</th>
+								<td>
+									<input type="submit" class="submit" value="Find">
+								</td>
+							</tr>
+							</tbody>
+							</table>
+							</form>					
+</body>
 </html>

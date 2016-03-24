@@ -7,7 +7,7 @@
 	<constant name="struts.ui.theme" value="simple"></constant>
     <constant name="struts.devMode" value="true" />
     
-<package name="user" namespace="/" extends="json-default">
+	<package name="user" namespace="/" extends="json-default">
 
 	
 		<action name="userAction_*" method="{1}" class="userAction">
@@ -20,5 +20,24 @@
 			</result>
 		</action>
 	</package>
+	<package name="store" namespace="/" extends="json-default">
+
+	
+		<action name="storeAction_*" method="{1}" class="storeAction">
+			<result type="json" name="map">
+				<param name="root">map</param> 
+			</result>
+		</action>
+	</package>
+	<package name="goods" namespace="/" extends="json-default">
+
+	
+		<action name="goodsAction_*" method="{1}" class="goodsAction">
+			<result type="json" name="map">
+				<param name="root">map</param> 
+			</result>
+		</action>
+	</package>
+	
 
 </struts>
