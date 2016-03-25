@@ -74,8 +74,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    						<a href="${ pageContext.request.contextPath }/goodsAction_findbyPID">
 						findByPID
 						</a>
-   						<br><br><br>
-   	<form id="findSid" action="${ pageContext.request.contextPath }/goodsAction_findSIDbyID"  method="post" >
+   						<br><br>
+   						<br>
+   	<form id="findSid" action="${ pageContext.request.contextPath }/goodsAction_findSIDbyGID"  method="post" >
 						<table>
 							<tbody><tr>
 								<th>Gid :</th><td>
@@ -89,6 +90,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</tr>
 							</tbody>
 							</table>
-							</form>					
+	</form>	
+	<form id="findStorebyGID" action="${ pageContext.request.contextPath }/goodsAction_findStorebyGID"  method="post" >
+						<table>
+							<tbody><tr>
+								<th>Gid :</th><td>
+								<input type="text" id="Gid" name="GId" class="text"/>	</td>
+							</tr>
+							<tr>
+								<th>&nbsp;</th>
+								<td>
+									<input type="submit" class="submit" value="findStorebyGID">
+								</td>
+							</tr>
+							</tbody>
+							</table>
+	</form>					
 </body>
 </html>

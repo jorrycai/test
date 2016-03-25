@@ -23,6 +23,9 @@
     	<property name="goodsDao">
     		<ref bean="goodsDao"/>
     	</property>
+    	<property name="storeDao">
+    		<ref bean="storeDao"/>
+    	</property>
  </bean>
 <bean id="goodsAction" class="com.shop.action.GoodsAction"
     	scope="prototype">

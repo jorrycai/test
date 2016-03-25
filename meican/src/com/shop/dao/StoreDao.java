@@ -9,10 +9,13 @@ import com.shop.vo.Goods;
 import com.shop.vo.Store;
 
 public class StoreDao  extends HibernateDaoSupport{
-	public List<Store> findBySid(Integer sid){
-		String hql = "from Store where SID= ?";
+	public List<Store> findBySid(int sid){
+		String hql = "from Store where S_ID = ?";
 	
+		
 		List<Store> list = this.getHibernateTemplate().find(hql,sid);
+		if(list==null||list.size()<=0)
+			System.out.println("chaxun 无果！");
 		
 		return list;
 	}

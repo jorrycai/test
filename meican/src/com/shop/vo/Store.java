@@ -1,8 +1,6 @@
 package com.shop.vo;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Store entity. @author MyEclipse Persistence Tools
@@ -34,7 +32,6 @@ public class Store implements java.io.Serializable {
 	private String SDistrict;
 	private String SLon;
 	private String SLat;
-	private Set environments = new HashSet(0);
 
 	// Constructors
 
@@ -48,7 +45,7 @@ public class Store implements java.io.Serializable {
 			short SIsOrder, String SGeohash, short SIsTop, String SType,
 			String SScore, Date SBeginTime, Date SEndTime, String SPic,
 			String SProvince, String SCity, String SDistrict, String SLon,
-			String SLat, Set environments) {
+			String SLat) {
 		this.SName = SName;
 		this.SPhone = SPhone;
 		this.SAddress = SAddress;
@@ -70,7 +67,6 @@ public class Store implements java.io.Serializable {
 		this.SDistrict = SDistrict;
 		this.SLon = SLon;
 		this.SLat = SLat;
-		this.environments = environments;
 	}
 
 	// Property accessors
@@ -249,14 +245,6 @@ public class Store implements java.io.Serializable {
 
 	public void setSLat(String SLat) {
 		this.SLat = SLat;
-	}
-
-	public Set getEnvironments() {
-		return this.environments;
-	}
-
-	public void setEnvironments(Set environments) {
-		this.environments = environments;
 	}
 
 }

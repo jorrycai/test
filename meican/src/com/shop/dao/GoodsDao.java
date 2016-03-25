@@ -27,10 +27,8 @@ public class GoodsDao extends HibernateDaoSupport{
 			System.out.print(list.toString());
 			if(list != null && list.size() > 0){
 				return list.get(0).getGSid();
-				
 			}else
 			return 0;
-		
 		}
 }
 

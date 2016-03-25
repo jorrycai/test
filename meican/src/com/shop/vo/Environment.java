@@ -11,9 +11,9 @@ public class Environment implements java.io.Serializable {
 	// Fields
 
 	private Integer EId;
-	private Store store;
 	private String EPic;
 	private String EType;
+	private Integer EStore;
 	private long EPrice;
 	private String EComment;
 	private Date EBeginTime;
@@ -29,12 +29,12 @@ public class Environment implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Environment(Store store, String EPic, String EType, long EPrice,
+	public Environment(String EPic, String EType, Integer EStore, long EPrice,
 			String EComment, Date EBeginTime, Date EEndTime, String EHimg,
 			String EScore, boolean EIsTop) {
-		this.store = store;
 		this.EPic = EPic;
 		this.EType = EType;
+		this.EStore = EStore;
 		this.EPrice = EPrice;
 		this.EComment = EComment;
 		this.EBeginTime = EBeginTime;
@@ -54,14 +54,6 @@ public class Environment implements java.io.Serializable {
 		this.EId = EId;
 	}
 
-	public Store getStore() {
-		return this.store;
-	}
-
-	public void setStore(Store store) {
-		this.store = store;
-	}
-
 	public String getEPic() {
 		return this.EPic;
 	}
@@ -76,6 +68,14 @@ public class Environment implements java.io.Serializable {
 
 	public void setEType(String EType) {
 		this.EType = EType;
+	}
+
+	public Integer getEStore() {
+		return this.EStore;
+	}
+
+	public void setEStore(Integer EStore) {
+		this.EStore = EStore;
 	}
 
 	public long getEPrice() {

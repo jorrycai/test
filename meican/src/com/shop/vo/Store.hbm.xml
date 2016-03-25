@@ -73,11 +73,5 @@
         <property name="SLat" type="string">
             <column name="S_Lat" />
         </property>
-        <set name="environments" inverse="true">
-            <key>
-                <column name="E_Store" />
-            </key>
-            <one-to-many class="com.shop.vo.Environment" />
-        </set>
     </class>
 </hibernate-mapping>

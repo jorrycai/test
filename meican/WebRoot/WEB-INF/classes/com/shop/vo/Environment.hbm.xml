@@ -10,14 +10,14 @@
             <column name="E_ID" />
             <generator class="increment" />
         </id>
-        <many-to-one name="store" class="com.shop.vo.Store" fetch="select">
-            <column name="E_Store" />
-        </many-to-one>
         <property name="EPic" type="string">
             <column name="E_Pic" />
         </property>
         <property name="EType" type="string">
             <column name="E_Type" />
+        </property>
+        <property name="EStore" type="integer">
+            <column name="E_Store" />
         </property>
         <property name="EPrice" type="long">
             <column name="E_Price" precision="10" scale="0" />

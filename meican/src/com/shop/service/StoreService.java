@@ -13,7 +13,7 @@ public class StoreService {
 	public void setStoreDao(StoreDao StoreDao) {
 		this.StoreDao = StoreDao;
 	}
-	public List<Store> findById(Integer s){
+	public List<Store> findById(int s){
 		return StoreDao.findBySid(s);
 	}
 	public List<Store> findByGeohash(String geohash){
